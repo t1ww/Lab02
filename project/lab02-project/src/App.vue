@@ -18,7 +18,7 @@ import EventCard from './components/EventCard.vue'
   </div>
 </template>
 
-<style scoped>
+<style>
 #layout {
   font-family: Avinir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -32,5 +32,8 @@ nav a {
 }
 nav a.router-link-exact-active {
   color: #42b983;
+}
+h2 {
+  font-size: 20px;
 }
 </style>
