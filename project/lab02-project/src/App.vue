@@ -8,12 +8,13 @@ import EventCard from './components/EventCard.vue'
     <header>
       <div class="wrapper">
         <nav>
-          <RouterLink to="/">Home</RouterLink>
+          <RouterLink to="/">Home</RouterLink> |
           <RouterLink to="/about">About</RouterLink>
         </nav>
       </div>
     </header>
-
+    <h1>Event For Good</h1>
+    <!-- new element -->
     <RouterView />
   </div>
 </template>
@@ -33,6 +34,7 @@ nav a {
 nav a.router-link-exact-active {
   color: #42b983;
 }
+
 h2 {
   font-size: 20px;
 }

@@ -2,26 +2,27 @@
 import EventCard from '@/components/EventCard.vue'
 import Event from '@/types/Event'
 import { ref } from 'vue'
+
 const events = ref<Event[]>([
   {
     id: 5928101,
     category: 'animal welfare',
     title: 'Cat Adoption Day',
-    description: 'Find your new feline friend at this event',
+    description: 'Find your new feline friend ay this event.',
     location: 'Meow Town',
-    date: 'January 28 , 2022',
-    time: '12:00',
+    date: 'January 28, 2022',
+    time: '12.00',
     petsAllowed: true,
-    organizer: 'Kat Laydee'
+    organizer: 'Kay Laydee'
   },
   {
-    id: 4582792,
+    id: 4582797,
     category: 'food',
     title: 'Community Gardening',
-    description: 'Join us as we tend to the community ediable plants',
+    description: 'Join us as we tend to the community edible plants.',
     location: 'Flora City',
-    date: 'March 14,2022',
-    time: '10:00',
+    date: 'March 14, 2022',
+    time: '10.00',
     petsAllowed: true,
     organizer: 'Fern Pollin'
   },
@@ -30,17 +31,28 @@ const events = ref<Event[]>([
     category: 'sustainability',
     title: 'Beach Cleanup',
     description: 'Help pick up trash along the shore.',
-    location: 'Playa Del Carmen',
-    date: 'July 22,2022',
-    time: '11:00',
-    petsAllowed: false,
-    organizer: 'Carey Wals'
+    location: 'Playa Del carmen',
+    date: 'July 22, 2022',
+    time: '11.00',
+    petsAllowed: true,
+    organizer: 'Carey Wales'
   }
 ])
 </script>
 
 <template>
-  <div class="home">
-    <EventCard v-for="event in events" :key="event.id" :event="event" />
+  <h1>Event for good</h1>
+  <!--new element-->
+  <div class="events">
+    <EventCard v-for="event in events" :key="event.id" :event="event"></EventCard>
+    <EventInfo v-for="event in events" :key="event.id" :event="event"></EventInfo>
   </div>
 </template>
+
+<style scoped>
+.events {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+</style>
