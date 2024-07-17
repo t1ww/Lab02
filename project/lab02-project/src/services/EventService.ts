@@ -11,8 +11,8 @@ const apiClient = axios.create({
 })
 
 export default {
-    getEvents(): Promise<AxiosResponse<Event[]>> {
-        return apiClient.get<Event[]>('/events')
+    getEvents(perPage: number, page:number): Promise<AxiosResponse<Event[]>> {
+        return apiClient.get<Event[]>('/events?limit' + perPage + '&_page' + page)
     },
     getEventById(id: number): Promise<AxiosResponse<Event>>{
         return apiClient.get<Event>('events/' + id.toString())
