@@ -1,9 +1,19 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import type { Ref } from 'vue'
 import type { Event } from '@/type'
+import EventService from '@/services/EventService'
 const event = ref<Event | null>(null)
-</script>
+const id: Ref<number> = ref(123)
 
+EventService.getEventById(id.value)
+  .then((response) => {
+    event.value = response.data
+  })
+  .catch((error) => {
+    console.log(error)
+  })
+</script>
 <template>
   <div v-if="event">
     <h1>{{ event.title }}</h1>

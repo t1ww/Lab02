@@ -17,12 +17,14 @@ defineProps<{
 </script>
 
 <template>
-  <div class="event-class">
-    <div class="event-card">
-      <h2>{{ event.title }}</h2>
-      <span>@{{ event.time }} on {{ event.date }}</span>
+  <RouterLink :to="{ name: 'event-detail', params: { id: event?.id } }">
+    <div class="event-class">
+      <div class="event-card">
+        <h2>{{ event?.title }}</h2>
+        <span>@{{ event?.time }} on {{ event?.date }}</span>
+      </div>
     </div>
-  </div>
+  </RouterLink>
 </template>
 
 <style scoped>
