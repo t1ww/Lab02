@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import EventCard from '@/components/EventCard.vue'
 import type { Event } from '@/type'
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, watchEffect } from 'vue'
 import EventService from '@/services/EventService'
 import type { AxiosResponse } from 'axios'
 
@@ -13,13 +13,15 @@ const props = defineProps({
   }
 })
 onMounted(() => {
-  EventService.getEvents(2, props.page)
-    .then((response: AxiosResponse<Event[]>) => {
-      events.value = response.data
-    })
-    .catch((error) => {
-      console.error('There was an error!', error)
-    })
+  watchEffect(() => {
+    EventService.getEvents(2, props.page)
+      .then((response: AxiosResponse<Event[]>) => {
+        events.value = response.data
+      })
+      .catch((error) => {
+        console.error('There was an error!', error)
+      })
+  })
 })
 </script>
 
