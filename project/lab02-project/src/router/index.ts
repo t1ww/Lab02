@@ -8,6 +8,7 @@ import EventEditView from '@/views/event/EventEditView.vue'
 import EventRegisterView from '@/views/event/EventRegisterView.vue'
 import EventLayoutView from '@/views/event/EventLayoutView.vue'
 import NotFoundView from '@/views/NotFoundView.vue'
+import NetworkErrorView from '@/views/NetworkErrorView.vue'
 
 export function createAppRouter(pageLimit: (number | null)[]) {
   return createRouter({
@@ -80,6 +81,11 @@ export function createAppRouter(pageLimit: (number | null)[]) {
         path: '/:catchAll(.*)',
         name: 'not-found',
         component: NotFoundView
+      },
+      {
+        path: '/network-error',
+        name: 'network-error',
+        component: NetworkErrorView
       }
     ]
   })
