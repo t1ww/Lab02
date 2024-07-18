@@ -19,7 +19,7 @@ const props = defineProps({
 })
 onMounted(() => {
   watchEffect(() => {
-    EventService.getEvents(props.pageLimit[props.page], props.page)
+    EventService.getEvents(props.pageLimit, props.page)
       .then((response: AxiosResponse<Event[]>) => {
         events.value = response.data
         totalEvent.value = response.headers['x-total-count']
