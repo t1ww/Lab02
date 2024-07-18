@@ -6,6 +6,7 @@ import StudentListView from '@/views/StudentListView.vue'
 import EventDetailView from '@/views/event/EventDetailView.vue'
 import EventEditView from '@/views/event/EventEditView.vue'
 import EventRegisterView from '@/views/event/EventRegisterView.vue'
+import EventLayoutView from '@/views/event/EventLayoutView.vue'
 
 export function createAppRouter(pageLimit: (number | null)[]) {
   return createRouter({
@@ -32,21 +33,41 @@ export function createAppRouter(pageLimit: (number | null)[]) {
       },
       {
         path: '/event/:id',
-        name: 'event-detail',
-        component: EventDetailView,
-        props: true
+        name: 'event-layout',
+        component: EventLayoutView,
+        props: true,
+        children: [
+          {
+            path: '',
+            name: 'event-detail',
+            component: EventDetailView,
+            props: true
+          },
+          {
+            path: 'edit',
+            name: 'event-edit',
+            props: true,
+            component: EventEditView
+          },
+          {
+            path: 'register',
+            name: 'event-register',
+            props: true,
+            component: EventRegisterView
+          }
+        ]
       },
       {
         path: '/event/:id/edit',
         name: 'event-edit',
-        component: EventEditView,
-        props: true
+        props: true,
+        component: EventEditView
       },
       {
         path: '/event/:id/register',
         name: 'event-register',
-        component: EventRegisterView,
-        props: true
+        props: true,
+        component: EventRegisterView
       }
     ]
   })
