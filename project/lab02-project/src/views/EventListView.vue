@@ -11,11 +11,15 @@ const props = defineProps({
   page: {
     type: Number,
     required: true
+  },
+  pageLimit: {
+    type: Array<number>,
+    required: true
   }
 })
 onMounted(() => {
   watchEffect(() => {
-    EventService.getEvents(2, props.page)
+    EventService.getEvents(props.pageLimit[props.page], props.page)
       .then((response: AxiosResponse<Event[]>) => {
         events.value = response.data
         totalEvent.value = response.headers['x-total-count']
@@ -27,7 +31,7 @@ onMounted(() => {
 })
 const hasNextPage = computed(() => {
   // calculate total page
-  const totalPages = Math.ceil(totalEvent.value / 2)
+  const totalPages = props.pageLimit.length - 1
   return props.page.valueOf() < totalPages
 })
 </script>
