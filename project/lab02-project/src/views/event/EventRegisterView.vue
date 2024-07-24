@@ -12,8 +12,10 @@ const props = defineProps<{
 const { event } = toRefs(props)
 const router = useRouter()
 const store = useMessageStore()
+
 const register = () => {
   //
+  console.log(event)
   store.updateMessage('You are successfully registered for ' + props.event.title)
   setTimeout(() => {
     store.resetMessage()
@@ -23,5 +25,6 @@ const register = () => {
 </script>
 
 <template>
+  <br />
   <button @click="register">Register</button>
 </template>

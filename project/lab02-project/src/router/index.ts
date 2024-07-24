@@ -61,13 +61,13 @@ export function createAppRouter(pageLimit: (number | null)[]) {
       },
       {
         path: '/event/:id/edit',
-        name: 'event-edit-view',
+        name: 'event-edit',
         props: true,
         component: EventEditView
       },
       {
         path: '/event/:id/register',
-        name: 'event-register-view',
+        name: 'event-register',
         props: true,
         component: EventRegisterView
       },
