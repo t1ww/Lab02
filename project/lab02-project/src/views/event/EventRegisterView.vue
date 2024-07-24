@@ -26,5 +26,5 @@ const register = () => {
 
 <template>
   <br />
-  <button @click="register">Register</button>
+  <button @click="register">Register Me!</button>
 </template>
