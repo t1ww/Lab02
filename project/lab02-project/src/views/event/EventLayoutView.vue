@@ -25,9 +25,9 @@ EventService.getEventById(Number(props.id))
   <div v-if="event">
     <h1>{{ event.title }}</h1>
     <div id="nav">
-      <RouterLink :to="{ name: 'event-detail', params: { id } }">Details</RouterLink> |
-      <RouterLink :to="{ name: 'event-register', params: { id } }">Register</RouterLink> |
-      <RouterLink :to="{ name: 'event-edit', params: { id } }">Edit</RouterLink>
+      <RouterLink :to="{ name: 'event-detail-view', params: { id } }">Details</RouterLink> |
+      <RouterLink :to="{ name: 'event-register-view', params: { id } }">Register</RouterLink> |
+      <RouterLink :to="{ name: 'event-edit-view', params: { id } }">Edit</RouterLink>
     </div>
 
     <RouterView :event="event"></RouterView>
