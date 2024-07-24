@@ -56,13 +56,7 @@ export function createAppRouter(pageLimit: (number | null)[]) {
                 }
               }
             })
-        }
-      },
-      {
-        path: '/event/:id',
-        name: 'event-layout-view',
-        component: EventLayoutView,
-        props: true,
+        },
         children: [
           {
             path: '',
