@@ -9,9 +9,12 @@ import EventRegisterView from '@/views/event/EventRegisterView.vue'
 import EventLayoutView from '@/views/event/EventLayoutView.vue'
 import NotFoundView from '@/views/NotFoundView.vue'
 import NetworkErrorView from '@/views/NetworkErrorView.vue'
+import nProgress from 'nprogress'
+import EventService from '@/services/EventService'
+import { useEventStore } from '@/stores/event'
 
 export function createAppRouter(pageLimit: (number | null)[]) {
-  return createRouter({
+  const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes: [
       {
@@ -32,6 +35,28 @@ export function createAppRouter(pageLimit: (number | null)[]) {
         path: '/student',
         name: 'student',
         component: StudentListView
+      },
+      {
+        path: '/event/:id',
+        name: 'event-layout-view',
+        component: EventLayoutView,
+        props: true,
+        beforeEnter: (to) => {
+          const id = parseInt(to.params.id as string)
+          const eventStore = useEventStore()
+          return EventService.getEventById(id)
+            .then((response) => {
+              eventStore.setEvent(response.data)
+            })
+            .catch((error) => {
+              if (error.response && error.response.status === 404) {
+                return {
+                  name: '404-resource-view',
+                  params: { resourse: 'event' }
+                }
+              }
+            })
+        }
       },
       {
         path: '/event/:id',
@@ -89,4 +114,11 @@ export function createAppRouter(pageLimit: (number | null)[]) {
       }
     ]
   })
+  router.beforeEach(() => {
+    nProgress.start()
+  })
+  router.afterEach(() => {
+    nProgress.done()
+  })
+  return router
 }
