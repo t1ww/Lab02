@@ -10,7 +10,15 @@ export default {
         'sp': '0 3px 12px 0 rgba(0,0,0, 0.2)'
       },
       fontFamily: {
-        sans: ['Avenir', 'Helvetica', 'Arial', 'sans-serif']
+        sans: ['Avenir', 'Helvetica', 'Arial', 'sans-serif'],
+      },
+      // this is animation class
+      animation: {
+        fade: 'yellowfade 3s ease-in-out'
+      },
+      keyframes: {
+        '0%': { backgroundColor: 'yellow' },
+        '100%': { backgroundColor: 'transparent' },
       }
     },
   },
