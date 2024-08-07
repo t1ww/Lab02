@@ -14,11 +14,13 @@ export default {
       },
       // this is animation class
       animation: {
-        fade: 'yellowfade 3s ease-in-out'
+        fade: 'yellowFade 3s ease-in-out'
       },
       keyframes: {
-        '0%': { backgroundColor: 'yellow' },
-        '100%': { backgroundColor: 'transparent' },
+        yellowFade:{
+          '0%': { backgroundColor: 'yellow' },
+          '100%': { backgroundColor: 'transparent' },
+        }
       }
     },
   },
