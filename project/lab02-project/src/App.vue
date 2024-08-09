@@ -2,12 +2,15 @@
 import { RouterLink, RouterView } from 'vue-router'
 import { useMessageStore } from './stores/message'
 import { storeToRefs } from 'pinia'
+import { injectSpeedInsights } from '@vercel/speed-insights'
+
+injectSpeedInsights()
+
 const store = useMessageStore()
 const { message } = storeToRefs(store)
 </script>
 
 <template>
-  <SpeedInsights />
   <div class="text-center font-sans text-gray-700 antialias">
     <h1>Deployed from vercel</h1>
     <header>
