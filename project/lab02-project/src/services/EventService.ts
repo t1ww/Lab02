@@ -2,7 +2,7 @@ import axios, { type AxiosResponse } from 'axios'
 import type { Event } from '@/type'
 
 const apiClient = axios.create({
-  baseURL: 'https://my-json-server.typicode.com/t1ww/lab02-mock-server/',
+  baseURL: 'http://localhost:8080/',
   withCredentials: false,
   headers: {
     Accept: 'application/json',
