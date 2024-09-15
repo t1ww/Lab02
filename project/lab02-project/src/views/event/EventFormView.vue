@@ -29,7 +29,7 @@ const event = ref<Event>({
   
         <label>Description</label>
         <input v-model="event.description" type="text" placeholder="Description" 
-        class="field"/>   
+        class="field"/>
   
         <h3>Where is your event?</h3>
         <label>Location</label>
