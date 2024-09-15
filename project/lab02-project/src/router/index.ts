@@ -2,6 +2,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import EventListView from '@/views/EventListView.vue'
 import AboutView from '@/views/AboutView.vue'
+import AddEventView from '@/views/event/EventFormView.vue'
 import StudentListView from '@/views/StudentListView.vue'
 import EventDetailView from '@/views/event/EventDetailView.vue'
 import EventEditView from '@/views/event/EventEditView.vue'
@@ -30,6 +31,11 @@ export function createAppRouter(pageLimit: (number | null)[]) {
         path: '/about',
         name: 'about',
         component: AboutView
+      },
+      {
+        path: '/add-event',
+        name: 'add-event',
+        component: AddEventView
       },
       {
         path: '/student',
