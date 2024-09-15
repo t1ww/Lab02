@@ -9,6 +9,11 @@ export interface Event {
   petsAllowed: boolean
   organizer: string
 }
+export interface Organizer {
+  id: number
+  organizationName: string
+  address: string
+}
 export interface Student {
   id: number
   studentId: string
