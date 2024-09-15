@@ -2,7 +2,7 @@ import axios, { type AxiosResponse } from 'axios'
 import type { Event } from '@/type'
 
 const apiClient = axios.create({
-  baseURL: 'http://localhost:8080/',
+  baseURL: import.meta.env.VITE_BACKEND_URL,
   withCredentials: false,
   headers: {
     Accept: 'application/json',
