@@ -2,6 +2,7 @@
 import type { Event } from '@/types';
 import { ref } from 'vue';
 import EventService from '@/services/EventService'
+import OrganizerService from '@/services/OrganizerService'
 import { useRouter } from 'vue-router'
 
 const event = ref<Event>({
@@ -27,7 +28,13 @@ function saveEvent() {
         })  
 }
 function saveOrganizer(){
-    
+    OrganizerService.saveOrganizer(event.value)
+        .then((response) => {
+            router.push({name: 'event-detail-view', params: {id: response.data.id}})
+        })
+        .catch(() => {
+            router.push({name: 'network-error-view'})
+        })  
 }
 
 </script>

@@ -39,6 +39,6 @@ export default {
   },
   
   saveEvent(event: Event){
-    return apiClient.post('/event', event)
+    return apiClient.post('/events', event)
   }
 }
