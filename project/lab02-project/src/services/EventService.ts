@@ -36,5 +36,9 @@ export default {
 
   getEventById(id: number): Promise<AxiosResponse<Event>> {
     return apiClient.get<Event>(`/events/${id}`)
+  },
+  
+  saveEvent(event: Event){
+    return apiClient.post('/event', event)
   }
 }
