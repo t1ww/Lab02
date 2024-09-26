@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import type { Event, Organizer} from '@/type';
+import type { Event } from '@/type';
 import { onMounted, ref } from 'vue';
 import EventService from '@/services/EventService';
 import { useRouter } from 'vue-router'
 import { useMessageStore } from '@/stores/message';
 import BaseInput from '@/components/BaseInput.vue';
 import OrganizerService from '@/services/OrganizerService';
+import BaseSelect from '@/components/BaseSelect.vue'
 
 const event = ref<Event>({
   id: 0,
@@ -73,18 +74,86 @@ onMounted(() => {
   
         <h3>Who is your organizer?</h3>
         <label>Select an Organizer</label>
-        <select v-model="event.organizer.id">
-          <option
-          v-for="option in organizers"
-          :value="option.id"
-          :key="option.id"
-          :selected="option.id === event.organizer.id"
-          >
-            {{ option.name }}
-          </option>
-        </select>
+        <BaseSelect v-model="event.organizer.id" :options="organizers" label="Organizer" />
         <button class="button" type="submit">Submit</button>
       </form>
       <pre>{{ event }}</pre>
     </div>
   </template>
+
+<style lang="css">
+  /* write css for me */
+  /* General container styles */
+div {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1, h3 {
+  font-family: 'Arial', sans-serif;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* BaseInput and form elements */
+.field, .base-input input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.base-input label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+/* BaseSelect and select elements */
+.base-select select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+/* Styling the <pre> element */
+pre {
+  background-color: #e8e8e8;
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #333;
+  overflow: auto;
+  margin-top: 20px;
+}
+
+</style>
