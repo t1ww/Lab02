@@ -4,6 +4,7 @@ import type { Organizer } from '@/type'
 const modelValue = defineModel()
 interface BaseSelectProps {
   options: Organizer[]
+  label: string
 }
 
 const props = withDefaults(defineProps<BaseSelectProps>(), {
