@@ -1,21 +1,19 @@
 // import './assets/main.css'
 import './assets/style.css'
-import { inject } from '@vercel/analytics'
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 
 import App from './App.vue'
-import { createAppRouter } from './router'
-// nprogress
+import router  from './router'
 import 'nprogress/nprogress.css'
 
 const app = createApp(App)
-const pageLimit = [null, 3, 1, 2, 1]
-
+import { inject } from '@vercel/analytics'
 inject()
 
+
 app.use(createPinia())
-app.use(createAppRouter(pageLimit))
+app.use(router)
 
 app.mount('#app')

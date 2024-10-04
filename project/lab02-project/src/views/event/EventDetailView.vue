@@ -1,16 +1,16 @@
 <script setup lang="ts">
+import { toRefs, defineProps } from 'vue'
 import type { Event } from '@/type'
-import type { PropType } from 'vue'
-defineProps({
-  event: {
-    type: Object as PropType<Event>,
-    require: true
-  }
-})
+
+const props = defineProps<{
+    event: Event
+    id: String
+}>()
+const { event } = toRefs(props)
 </script>
 <template>
-  <div v-if="event">
-    <p>{{ event.title }} @ {{ event.location }}</p>
-    <p>{{ event.description }}</p>
-  </div>
+    
+        <p>{{ event.title }} @ {{ event.location }}</p>
+        <p>{{ event.description }}</p>
+    
 </template>

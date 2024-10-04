@@ -1,4 +1,4 @@
-import type { Organizer } from './../type';
+import {type Organizer } from './../type';
 import axios from 'axios'
 
 const apiClient = axios.create({
