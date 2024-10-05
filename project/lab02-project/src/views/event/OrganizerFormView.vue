@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Organizer } from '@/type';
+import type { Organizer } from '@/types';
 import { ref } from 'vue';
 import OrganizerService from '@/services/OrganizerService';
 import { useRouter } from 'vue-router'
@@ -12,17 +12,21 @@ const organizer = ref<Organizer>({
 });
 
 const router = useRouter();
-const store = useMessageStore();
+const store = useMessageStore()
 
 function saveOrganizer() {
   OrganizerService.saveOrganizer(organizer.value)
     .then((response) => {
+      
       store.updateMessage('You are successfully add a new oragnization for ' + 
       response.data.title)
       setTimeout(() => {
         store.resetMessage()
       }, 3000)
     })
+    .catch(() => {
+      router.push({ name: 'network-error-view' });
+    });
 }
 </script>
 
@@ -43,3 +47,4 @@ function saveOrganizer() {
       
     </div>
   </template>
+

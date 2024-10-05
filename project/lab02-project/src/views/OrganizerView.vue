@@ -1,7 +1,7 @@
 <script setup lang="ts">
-  import OrganizerCard from '@/components/OrganizerCard.vue'
+  import OrganizerCard from '@/components/OrganizerCard.vue';
   import OrganizerDetail from '@/components/OrganizerDetail.vue'
-  import type { Organizer } from '@/type'
+  import type { Organizer } from '@/types'
   import { ref, onMounted, computed, watchEffect } from 'vue'
   import OrganizerService from '@/services/OrganizerService'
 

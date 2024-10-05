@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Organizer } from '@/type'
+import type { Organizer } from '@/types'
 
 const modelValue = defineModel()
 interface BaseSelectProps {

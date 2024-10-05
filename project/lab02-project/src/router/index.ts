@@ -3,11 +3,13 @@ import EventListView from '@/views/EventListView.vue'
 import AboutView from '@/views/AboutView.vue'
 import NotFoundView from '@/views/NotFoundView.vue'
 import OrganizerView from '@/views/OrganizerView.vue'
+import AuctionItemListView from '@/views/AuctionItemList.vue'
 
-import EventDetailView from '@/views/event/EventDetailView.vue'
-import EventRegisterView from '@/views/event/EventRegisterView.vue'
-import EventEditView from '@/views/event/EventEditView.vue'
-import EventLayoutView from '@/views/event/EventLayoutView.vue'
+
+import EventDetailView from '@/views/event/DetailView.vue'
+import EventRegisterView from '@/views/event/RegisterView.vue'
+import EventEditView from '@/views/event/EditView.vue'
+import EventLayoutView from '@/views/event/LayoutView.vue'
 import AddEventView from '@/views/event/EventFormView.vue'
 import AddOrganizerView from '@/views/event/OrganizerFormView.vue'
 
@@ -15,6 +17,7 @@ import StudentListView from '@/views/StudentListView.vue'
 import nProgress from 'nprogress'
 import { useEventStore } from '@/stores/event'
 import EventService from '@/services/EventService'
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -33,7 +36,7 @@ const router = createRouter({
         beforeEnter: (to) => {
           const id = parseInt(to.params.id as string)
           const eventStore = useEventStore()
-          return EventService.getEventById(id)
+          return EventService.getEvent(id)
           .then((Response) => {
             eventStore.setEvent(Response.data)
           })
@@ -90,6 +93,12 @@ const router = createRouter({
       name: 'add-organier',
       component: AddOrganizerView
     },
+    {
+  path: '/auction-item',
+  name: 'auction-item',
+  component: AuctionItemListView,
+  props: (route) => ({ page: parseInt(route.query.page?.toString() || '1') })
+},
     {
       path: '/404/:resource',
       name: '404-resource-view',

@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { type Organizer } from '@/types'
+import { ref } from "vue";
+import { type AuctionItem } from '@/types'
 const props = defineProps<{
-  organizer: Organizer
+  auctionItem: AuctionItem
 }>()
 
 </script>
@@ -12,8 +13,8 @@ const props = defineProps<{
     <div 
     class="cursor-pointer border border-gray-600 p-[20px] w-[250px] mb-[18px] hover:scale-101 hover:shadow-sp"
     >
-      <h2>Organizer</h2>
-      <span>{{ organizer.id }} @ {{ organizer.name }}</span>
+      
+      <span>{{ auctionItem.name }} @ {{ auctionItem.description }} @ {{ auctionItem.successfulBid }}</span>
     </div>
   </div>
 </template>
