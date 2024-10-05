@@ -8,7 +8,7 @@ export interface Event {
     time: string
     petsAllowed: boolean
     organizer: Organizer
-    participant: Participant
+    participant: Participant[]
   }
   export interface Organizer {
     id: number

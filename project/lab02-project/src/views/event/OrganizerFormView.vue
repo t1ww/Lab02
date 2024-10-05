@@ -48,3 +48,4 @@ function saveOrganizer() {
     </div>
   </template>
 
+<style scoped src="@/assets/form-style.css"></style>
