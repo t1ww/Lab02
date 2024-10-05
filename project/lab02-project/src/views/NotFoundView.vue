@@ -1,14 +1,16 @@
 <script setup lang="ts">
-defineProps({
-    resource: {
-        type: String,
-        required: true,
-        default: 'page'
+import { defineProps, withDefaults } from 'vue'
+const props = withDefaults(
+    defineProps<{
+        resource: string
+    }>(),
+    {
+        resource: 'page'
     }
-})
+)
 </script>
 <template>
-    <h1>Oop!</h1>
-    <h3>{{ resource }}you're looking for is not here</h3>
-    <RounterLink :to="{name: 'event-list'}">Back to home page</RounterLink>
+    <h1>Ooops!</h1>
+    <h3>The {{ resource }} you're looking for is not here.</h3>
+    <router-link :to="{ name: 'event-list-view' }">Back to the home page</router-link>
 </template>

@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { defineProps } from 'vue'
-import type {Organizer} from '@/types'
+import type {Event} from '@/types'
 
 const props = defineProps<{
-  organizer: Organizer
+  event: Event
 }>()
 </script>
 

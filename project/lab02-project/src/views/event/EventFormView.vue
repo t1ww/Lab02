@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Event } from '@/type';
+import type { Event, Organizer } from '@/types';
 import { onMounted, ref } from 'vue';
 import EventService from '@/services/EventService';
 import { useRouter } from 'vue-router'
@@ -20,6 +20,11 @@ const event = ref<Event>({
   organizer: {
     id: 0,
     name: ''
+  },
+  participant: {
+    id: 0,
+    name: '',
+    telNo: ''
   }
 });
 
@@ -80,3 +85,5 @@ onMounted(() => {
       <pre>{{ event }}</pre>
     </div>
   </template>
+
+<style scoped src="@/assets/form-style.css"></style>

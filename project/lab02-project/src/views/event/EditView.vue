@@ -12,15 +12,17 @@ const { event } = toRefs(props)
 const router = useRouter()
 const store = useMessageStore()
 const edit = () => {
-  //
-  store.updateMessage('Data has been updated ' + props.event.title)
+  router.push({ name: 'event-detail-view', params: { id: props.event.id } })
+  store.updateMessage('data has been updated ' + props.event.title)
   setTimeout(() => {
     store.resetMessage()
   }, 3000)
-  router.push({ name: 'event-detail-view', params: { id: props.event.id } })
+
 }
 </script>
-
 <template>
-  <button @click="edit">Edit</button>
+    
+        <p>Register event here</p>
+        <button @click="edit">Edit</button>
+    
 </template>
