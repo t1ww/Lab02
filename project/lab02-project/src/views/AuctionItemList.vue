@@ -14,7 +14,6 @@ const hasNextPage = computed(() => {
     const totalPages = Math.ceil(totalItems.value / 3)
     return page.value < totalPages
   })
-const keyword = ref('');
 const props = defineProps({
   page: {
     type: Number,
@@ -23,38 +22,31 @@ const props = defineProps({
 });
 const page = computed(() => props.page)
 onMounted(() => {
-  watchEffect(() => {
-    updateKeyword('');
-  });
-});
+    watchEffect(() => {
+      
+    updateKeyword()
+  })
+})
 
-function updateKeyword(value: string) {
+const keyword = ref('')
+
+function updateKeyword() {
   let queryFunction;
-
-  if (value === '') {
-    
-    if (page.value !== undefined) {
-      queryFunction = AuctionItemService.getAuctionItems(3, page.value);
-    } else {
-      console.error('Page value is undefined');
-      return; // Exit if the page value is not defined
-    }
+  if (keyword.value === '') {
+    queryFunction = AuctionItemService.getAuctionItems(3, page.value);
   } else {
-    // Use the provided value correctly
-    queryFunction = AuctionItemService.searchAuctionItemsByDescription(value, 3, page.value);
+    queryFunction = AuctionItemService.searchAuctionItemsByDescription(keyword.value, 3, page.value);
   }
 
   queryFunction
     .then((response) => {
-      auctionItems.value = response.data; // Update auction items
-      totalItems.value = response.headers['x-total-count']; // Update total count
+      auctionItems.value = response.data;
+      totalItems.value = response.headers['x-total-count'];
     })
     .catch(() => {
-      // Handle network error, for example, redirecting to an error page
-      router.push({ name: 'NetworkError' }); // Ensure this route exists
+      router.push({ name: 'NetworkError' });
     });
 }
-
 </script>
 
 <template>
@@ -66,7 +58,7 @@ function updateKeyword(value: string) {
   v-model="keyword"
   type="text"
   label="Search by description..."
-  @input="updateKeyword(keyword)"
+  @input="updateKeyword()"
 />
         </div>
 

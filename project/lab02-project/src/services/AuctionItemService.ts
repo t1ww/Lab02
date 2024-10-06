@@ -1,5 +1,5 @@
-import {type AuctionItem } from './../types';
-import axios, { type AxiosResponse } from 'axios'
+import { type AuctionItem } from './../types';
+import axios, { type AxiosResponse } from 'axios';
 
 const apiClient = axios.create({
     baseURL: import.meta.env.VITE_BACKEND_URL,
@@ -11,15 +11,15 @@ const apiClient = axios.create({
 });
 
 export default {
-    getAuctionItems(perPage: Number, page: Number) {
-        return apiClient.get('/auctions?_limit=' + perPage + '&_page=' + page);
+    getAuctionItems(perPage: number, page: number): Promise<AxiosResponse<AuctionItem[]>> {
+        return apiClient.get<AuctionItem[]>(`/auctions?_limit=${perPage}&_page=${page}`);
     },
-    getAuctionItem(id: number) {
-        return apiClient.get('/auctions/' + id);  
+
+    getAuctionItem(id: number): Promise<AxiosResponse<AuctionItem>> {
+        return apiClient.get<AuctionItem>(`/auctions/${id}`);  
     },
     
-    searchAuctionItemsByDescription(keyword: string, perPage: number, page: number):
-        Promise<AxiosResponse<AuctionItem[]>> {
-            return apiClient.get<AuctionItem[]>('/auctions?description=' + keyword + '&_limit=' + perPage + '&_page=' + page)
-        }
-}
+    searchAuctionItemsByDescription(keyword: string, perPage: number, page: number): Promise<AxiosResponse<AuctionItem[]>> {
+        return apiClient.get<AuctionItem[]>(`/auctions?description=${keyword}&_limit=${perPage}&_page=${page}`);
+    }
+};

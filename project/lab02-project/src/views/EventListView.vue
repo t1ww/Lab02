@@ -5,6 +5,8 @@
   import { ref, onMounted, computed, watchEffect } from 'vue'
   import EventService from '@/services/EventService'
   import BaseInput from '@/components/BaseInput.vue'
+  import { useRouter } from 'vue-router';
+  const router = useRouter()
 
   const events = ref<Event[] | null>(null)
   const totalEvents = ref(0)
@@ -28,7 +30,7 @@
 
 const keyword = ref('')
 
-function updateKeyword(value) {
+function updateKeyword() {
   let queryFunction;
   if (keyword.value === '') {
     queryFunction = EventService.getEvents(3, page.value);

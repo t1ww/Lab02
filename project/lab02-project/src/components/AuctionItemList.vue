@@ -19,16 +19,9 @@ onMounted(async () => {
       <h1>Auction Items</h1>
       <ul>
         <li v-for="item in auctionItems" :key="item.id">
-          <h2>{{ item.name }}</h2>
-          <p>{{ item.description }}</p>
-          <p v-if="item.successfulBid">Successful Bid: Yes</p>
-          <p v-else>Successful Bid: No</p>
-          <h3>Bids:</h3>
-          <ul>
-            <li v-for="bid in item.bids" :key="bid.id">
-              Amount: {{ bid.bidAmount }} - Successful: {{ bid.successful }}
-            </li>
-          </ul>
+          <h2>{{}}</h2>
+          <p>{{}}</p>
+          <p v-if="item">winning bid : {{  }}</p>
         </li>
       </ul>
     </div>

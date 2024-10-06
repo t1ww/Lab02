@@ -46,9 +46,9 @@ export interface Event {
 
   export interface AuctionItem {
     id: number
-    name: string
+    title: string
     description: string
-    successfulBid: boolean
+    type: string
   }
 
   export interface AuctionItemState {
