@@ -31,22 +31,28 @@ onMounted(() => {
 const keyword = ref('')
 
 function updateKeyword() {
-  let queryFunction;
-  if (keyword.value === '') {
-    queryFunction = AuctionItemService.getAuctionItems(3, page.value);
-  } else {
-    queryFunction = AuctionItemService.searchAuctionItemsByDescription(keyword.value, 3, page.value);
-  }
+    console.log('Current keyword:', keyword.value);
+    
+    let queryFunction;
+    if (keyword.value === '') {
+        queryFunction = AuctionItemService.getAuctionItems(3, page.value);
+    } else {
+        console.log('Searching auctions with keyword:', keyword.value);
+        queryFunction = AuctionItemService.searchAuctionItems(keyword.value, 3, page.value);
+    }
 
-  queryFunction
-    .then((response) => {
-      auctionItems.value = response.data;
-      totalItems.value = response.headers['x-total-count'];
-    })
-    .catch(() => {
-      router.push({ name: 'NetworkError' });
-    });
+    queryFunction
+        .then((response) => {
+            auctionItems.value = response.data;
+            totalItems.value = response.headers['x-total-count'];
+            console.log('Search results:', response.data);
+        })
+        .catch((error) => {
+            console.error('Error fetching auctions:', error);
+            router.push({ name: 'NetworkError' });
+        });
 }
+
 </script>
 
 <template>
