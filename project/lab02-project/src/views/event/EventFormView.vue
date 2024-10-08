@@ -18,11 +18,12 @@ const event = ref<Event>({
   date: '',
   time: '',
   petsAllowed: false,
-  images: [''],
+  images: [],
   organizer: {
     id: 0,
     name: '',
-    address: ''
+    address: '',
+    image: ''
   },
   participant: [
     {
