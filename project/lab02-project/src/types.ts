@@ -15,6 +15,7 @@ export interface Event {
     id: number
     name: string
     address: string
+    image: string
   }
   export interface Participant {
     id: number
