@@ -9,12 +9,12 @@
     </div>
 
     <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-      <form class="space-y-6" action="#" method="POST">
+      <form class="space-y-6" @submit.prevent="onSubmit">
         <div>
           <label for="email" class="block text-sm font-medium leading-6 text-gray-900">
             Email address
           </label>
-          <InputText type="email" v-model="email" placeholder="Email address" />
+          <InputText type="email" v-model="email" placeholder="Email address" :error="errors['email']"/>
         </div>
 
         <div>
@@ -28,7 +28,7 @@
               </a>
             </div>
           </div>
-          <InputText type="email" v-model="email" placeholder="Email address" />
+          <InputText type="password" v-model="password" placeholder="Password" :error="errors['password']"/>
         </div>
 
         <div>
@@ -51,7 +51,25 @@
 
 <script setup lang="ts">
 import InputText from '@/components/InputText.vue'
-import { ref } from 'vue'
-const email = ref('')
-const password = ref('')
+import * as yup from 'yup'
+
+import { useField, useForm } from 'vee-validate'
+
+const validationSchema = yup.object({
+  email: yup.string().required('The email is required').email('Input must be an email.'),
+  password: yup.string().required('The password is required').min(6, 'The password must be at least 6 characters. ')
+})
+const { errors, handleSubmit } = useForm({
+  validationSchema,
+  initialValues: {
+    email: '',
+    password: ''
+  }
+})
+const { email } = useField<string>('email')
+const { password } = useField<string>('password')
+const onSubmit = handleSubmit((values) => {
+  console.log(values)
+})
+
 </script>
