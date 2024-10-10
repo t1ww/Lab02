@@ -3,6 +3,8 @@ import InputText from '@/components/InputText.vue'
 import * as yup from 'yup'
 import { useAuthStore } from '@/stores/auth'
 import { useField, useForm } from 'vee-validate'
+import { useMessageStore } from '@/stores/message'
+const messageStore = useMessageStore()
 
 import { useRouter } from 'vue-router'
 const router = useRouter()
@@ -26,7 +28,10 @@ const onSubmit = handleSubmit((values) => {
     .then(() => {
       router.push({name: 'event-list-view'})
     }).catch((err) => {
-      console.log('error', err)
+      messageStore.updateMessage('could not login')
+      setTimeout(()=> {
+        messageStore.resetMessage()
+      }, 3000)
     })
 })
 </script>

@@ -4,6 +4,7 @@ import { useMessageStore } from './stores/message'
 import { storeToRefs } from 'pinia'
 
 import { injectSpeedInsights } from '@vercel/speed-insights';
+import { mdiAccountPlus, mdiLogin } from '@mdi/js';
 
 injectSpeedInsights();
 const store = useMessageStore()
@@ -18,15 +19,40 @@ const { message } = storeToRefs(store)
       </div>
       <div class="wrapper">
         <nav class="py-6">
-          <router-link class="font-bold text-gray-700" :to="{ name: 'event-list-view' }" exact-active-class="text-green-500">Event</router-link> |
-          <router-link class="font-bold text-gray-700" :to="{ name: 'about' }" exact-active-class="text-green-500">About</router-link> |
-          <router-link class="font-bold text-gray-700" :to="{ name: 'add-event' }" exact-active-class="text-green-500">New Event</router-link> |
-          <router-link class="font-bold text-gray-700" :to="{ name: 'organizer' }" exact-active-class="text-green-500">Organizer</router-link> |
-          <router-link class="font-bold text-gray-700" :to="{ name: 'add-organier' }" exact-active-class="text-green-500">New Organizer</router-link> |
-          <router-link class="font-bold text-gray-700" :to="{ name: 'auction-item' }" exact-active-class="text-green-500">AuctionItem</router-link> 
+          <nav class="flex">
+            <ul class="flex navbar-nav ml-auto">
+              <li class="nav-item px-2">
+                <router-link to="/register" class="nav-link">
+                  <div class="flex items-center">
+                    <SvgIcon type="mdi" :path="mdiAccountPlus" /> <span class="ml-3">Sign Up</span>
+                  </div>
+                </router-link>
+              </li>
+              <li class="nav-item px-2">
+                <router-link to="/login" class="nav-link">
+                  <div class="flex items-center">
+                    <SvgIcon type="mdi" :path="mdiLogin" /> <span class="ml-3">Login</span>
+                  </div>
+                </router-link>
+              </li>
+            </ul>
+          </nav>
 
-          | <RouterLink class="font-bold text-gray-700"
-        exact-active-class="text-green-500" :to="{ name: 'student' }">Student</RouterLink>
+          <router-link class="font-bold text-gray-700" :to="{ name: 'event-list-view' }"
+            exact-active-class="text-green-500">Event</router-link> |
+          <router-link class="font-bold text-gray-700" :to="{ name: 'about' }"
+            exact-active-class="text-green-500">About</router-link> |
+          <router-link class="font-bold text-gray-700" :to="{ name: 'add-event' }"
+            exact-active-class="text-green-500">New Event</router-link> |
+          <router-link class="font-bold text-gray-700" :to="{ name: 'organizer' }"
+            exact-active-class="text-green-500">Organizer</router-link> |
+          <router-link class="font-bold text-gray-700" :to="{ name: 'add-organier' }"
+            exact-active-class="text-green-500">New Organizer</router-link> |
+          <router-link class="font-bold text-gray-700" :to="{ name: 'auction-item' }"
+            exact-active-class="text-green-500">AuctionItem</router-link>
+
+          | <RouterLink class="font-bold text-gray-700" exact-active-class="text-green-500" :to="{ name: 'student' }">
+            Student</RouterLink>
         </nav>
       </div>
     </header>
@@ -39,6 +65,6 @@ const { message } = storeToRefs(store)
 h2 {
   font-size: 20px;
 }
-/* lab 4. 1.5 */
 
+/* lab 4. 1.5 */
 </style>
