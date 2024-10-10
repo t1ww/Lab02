@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia';
 import axios from 'axios';
 import type { AxiosInstance } from 'axios';
-import { Organizer } from '@/types';
+import { type Organizer } from '@/types';
 
 const apiClient: AxiosInstance = axios.create({
   baseURL: import.meta.env.VITE_BACKEND_URL,
@@ -35,6 +35,17 @@ export const useAuthStore = defineStore('auth', {
           localStorage.setItem('user', JSON.stringify(this.user))
           return response;
         })
+    },
+    logout() {
+      console.log('logout')
+      this.token = null
+      this.user = null
+      localStorage.removeItem('access_token')
+      localStorage.removeItem('user')
+    },
+    reload(token: string, user: EventOrganizer) {
+      this.token = token
+      this.user = user
     }
   }
 })
