@@ -10,8 +10,10 @@ import { inject } from '@vercel/analytics'
 // nprogress
 import 'nprogress/nprogress.css'
 
+// 5.2 Lab12
+import '@/services/AxiosInterceptorSetup.ts'
+
 const app = createApp(App)
-const pageLimit = [null, 3, 1, 2, 1]
 
 inject()
 app.use(createPinia())
