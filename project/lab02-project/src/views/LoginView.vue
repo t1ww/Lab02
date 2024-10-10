@@ -3,6 +3,10 @@ import InputText from '@/components/InputText.vue'
 import * as yup from 'yup'
 import { useAuthStore } from '@/stores/auth'
 import { useField, useForm } from 'vee-validate'
+
+import { useRouter } from 'vue-router'
+const router = useRouter()
+
 const authStore = useAuthStore()
 const validationSchema = yup.object({
   email: yup.string().required('The email is required'),
@@ -20,7 +24,7 @@ const { value: password } = useField<string>('password')
 const onSubmit = handleSubmit((values) => {
   authStore.login(values.email, values.password)
     .then(() => {
-      console.log('login sucess')
+      router.push({name: 'event-list-view'})
     }).catch((err) => {
       console.log('error', err)
     })
