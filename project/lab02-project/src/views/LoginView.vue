@@ -27,7 +27,7 @@ const onSubmit = handleSubmit((values) => {
   authStore.login(values.email, values.password)
     .then(() => {
       router.push({ name: 'event-list-view' })
-    }).catch((err) => {
+    }).catch(() => {
       messageStore.updateMessage('could not login')
       setTimeout(() => {
         messageStore.resetMessage()

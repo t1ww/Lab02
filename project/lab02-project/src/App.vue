@@ -89,6 +89,10 @@ function logout() {
 
           | <RouterLink class="font-bold text-gray-700" exact-active-class="text-green-500" :to="{ name: 'student' }">
             Student</RouterLink>
+
+            <span v-if="authStore.isAdmin">
+              <RouterLink :to="{ name: 'add-event'}">New Event</RouterLink>
+            </span>
         </nav>
       </div>
     </header>

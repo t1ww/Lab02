@@ -19,7 +19,10 @@ export const useAuthStore = defineStore('auth', {
   getters: {
     currentUserName(): string {
       return this.user?.name || ''
-    }
+    },
+    isAdmin(): Boolean {
+      return this.user?.roles.includes('ROLE_ADMIN') || false
+    },
   },
   actions: {
     login(email: string, password: string) {
@@ -43,7 +46,7 @@ export const useAuthStore = defineStore('auth', {
       localStorage.removeItem('access_token')
       localStorage.removeItem('user')
     },
-    reload(token: string, user: EventOrganizer) {
+    reload(token: string, user: Organizer) {
       this.token = token
       this.user = user
     }
