@@ -43,7 +43,7 @@ function updateKeyword() {
       totalEvents.value = response.headers['x-total-count'];
     })
     .catch(() => {
-      router.push({ name: 'NetworkError' });
+      router.push({ name: 'network-error-view' });
     });
 }
 </script>

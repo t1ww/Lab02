@@ -9,8 +9,6 @@ apiClient.interceptors.request.use(
         return request
     },
     (error) => {
-
         return Promise.reject(error)
-
     }
 )

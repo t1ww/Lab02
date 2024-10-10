@@ -4,6 +4,7 @@ import AboutView from '@/views/AboutView.vue'
 import NotFoundView from '@/views/NotFoundView.vue'
 import OrganizerView from '@/views/OrganizerView.vue'
 import AuctionItemListView from '@/views/AuctionItemList.vue'
+import LoginView from '@/views/LoginView.vue'
 
 import EventDetailView from '@/views/event/DetailView.vue'
 import EventRegisterView from '@/views/event/RegisterView.vue'
@@ -16,7 +17,6 @@ import StudentListView from '@/views/StudentListView.vue'
 import nProgress from 'nprogress'
 import { useEventStore } from '@/stores/event'
 import EventService from '@/services/EventService'
-import LoginView from '@/views/LoginView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),

@@ -1,3 +1,4 @@
+import type { AxiosResponse } from 'axios';
 import {type Organizer } from './../types';
 import apiClient from './AxiosClient'
 

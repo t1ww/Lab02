@@ -1,3 +1,4 @@
+import type { AxiosResponse } from 'axios'
 import apiClient from './AxiosClient'
 import type { Event } from '@/types'
 
